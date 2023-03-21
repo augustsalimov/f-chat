@@ -3,7 +3,7 @@ FROM python:3.10
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN apt-get update && apt-get install
+RUN apt-get update && apt-get upgrade && rm -rf /var/lib/apt/lists/*
 RUN apt-get install -y sqlite3 libsqlite3-dev
 
 RUN mkdir -p /opt/app

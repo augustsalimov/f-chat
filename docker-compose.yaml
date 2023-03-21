@@ -19,8 +19,6 @@ services:
       - api_network
     expose:
       - "${REDIS_PORT}"
-    ports:
-      - "${REDIS_PORT}:${REDIS_PORT}"
     restart: on-failure
     
   postgres:
@@ -36,8 +34,8 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     networks:
       - api_network
-    ports:
-      - ${DB_PORT}:${DB_PORT}
+    expose:
+      - "${DB_PORT}"
     restart: on-failure
 
   app:
