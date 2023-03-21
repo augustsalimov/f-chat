@@ -1,16 +1,14 @@
 from flask import Flask, render_template
 
-from fields import *
-from models import *
-from blueprints import IndexBlueprint
+from blueprints import FrontendBlueprint
 
 
 def create_app() -> Flask:
     app = Flask(__name__)
     app.secret_key = "hey"
     app.config["SQLALCHEMY_DATABASE_URI"] = ""
-    app.register_blueprint(IndexBlueprint.app)
-    
+    app.register_blueprint(FrontendBlueprint.app)
+
     return app
 
 

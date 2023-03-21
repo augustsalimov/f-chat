@@ -1,1 +1,1 @@
-from .index import IndexBlueprint
+from .frontend import FrontendBlueprint
