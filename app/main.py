@@ -1,19 +1,23 @@
 from flask import Flask, render_template
+
 from fields import *
+from models import *
+from blueprints import IndexBlueprint
 
 
-app = Flask(__name__)
-app.secret_key = "hey"
+def create_app() -> Flask:
+    app = Flask(__name__)
+    app.secret_key = "hey"
+    app.config["SQLALCHEMY_DATABASE_URI"] = ""
+    app.register_blueprint(IndexBlueprint.app)
+    
+    return app
 
 
-@app.route("/", methods=["GET", "POST"])
-def index():
-    reg_form = RegistrationForm()
-    if reg_form.validate_on_submit():
-        return "Great success"
-
-    return render_template("index.html", form=reg_form)
+def main() -> int:
+    create_app().run(debug=True)
+    return 0
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    raise SystemExit(main())
