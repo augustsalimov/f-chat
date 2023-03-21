@@ -53,19 +53,6 @@ services:
     entrypoint: [ "bash", "./entrypoint.sh" ]
     restart: on-failure
 
-  nginx:
-    image: nginx:1.19.8-alpine
-    container_name: 'nginx'
-    depends_on:
-      - app
-    ports:
-      - "${NGINX_PORT}:${NGINX_PORT}"
-    volumes:
-      - static_data:/var/www/html/static
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./nginx/conf.d/site.conf:/etc/nginx/conf.d/site.conf:ro
-    restart: on-failure
-
 networks:
   api_network:
     driver: bridge
@@ -73,4 +60,3 @@ networks:
 volumes:
   cache:
   postgres_data:
-  static_data:
