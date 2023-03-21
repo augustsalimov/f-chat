@@ -1,4 +1,4 @@
-# SOME PYTHON PROJECT
+# F-chat
 ## Table of Contents
 
 - [Description](#description)
@@ -7,10 +7,10 @@
 - [TODO](#todo)
 
 ## Description <a name="description"></a>
-This is template repo for python projects.
+Chat app using Flask-socketIO.
 
 ## Tech stack <a name="stack"></a>
-Some tech stack here.<br>
+Flask, flask-socketIO, gunicorn and so on.<br>
 
 ## Getting Started <a name="getting_started"></a>
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
