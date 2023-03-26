@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo "Run app"
-gunicorn main --bind 0.0.0.0:${APP_PORT} -k uvicorn.workers.UvicornWorker
+gunicorn --workers=2 'main:create_app()' --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:${APP_PORT}

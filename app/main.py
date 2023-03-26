@@ -1,3 +1,4 @@
+import uvicorn
 from flask import Flask, render_template
 
 from blueprints import FrontendBlueprint
@@ -12,10 +13,17 @@ def create_app() -> Flask:
     return app
 
 
-def main() -> int:
-    create_app().run(debug=True)
-    return 0
+'''def main() -> int:
+    create_app().run()
+    return 0'''
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(create_app().run(debug=True))
+
+'''if __name__ == "__main__":
+    uvicorn.run(
+        "main:create_app()",
+        host="0.0.0.0",
+        port=8080,
+    )'''

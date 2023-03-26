@@ -1,26 +1,5 @@
 version: '3'
 services:
-  redis:
-    image: redis/redis-stack
-    container_name: redis
-    env_file:
-      - .env
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://${REDIS_HOST}:${REDIS_PORT}" ]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-    volumes:
-      - cache:/data
-    networks:
-      - api_network
-    expose:
-      - "${REDIS_PORT}"
-    restart: on-failure
-    
   postgres:
     image: postgres:13.3-alpine
     container_name: postgres
@@ -56,5 +35,4 @@ networks:
     driver: bridge
       
 volumes:
-  cache:
   postgres_data:
